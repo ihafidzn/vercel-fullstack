@@ -40,6 +40,10 @@ mongoose
     console.error("Error connecting to MongoDB:", err);
   });
 
+app.get("/", (req, res) => {
+  res.json("hello");
+});
+
 app.get("/getUsers", (req, res) => {
   UserModel.find()
     .then((users) => res.json(users))
