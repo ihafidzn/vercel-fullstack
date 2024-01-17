@@ -20,6 +20,14 @@ app.use(bodyParser.json({ limit: "50mb" }));
 console.log("After body-parser middleware");
 const upload = multer({ limits: { fileSize: 50 * 1024 * 1024 } });
 
+app.use(
+  cors({
+    origin: [process.env.URL],
+    methods: ["POST, GET, DELETE"],
+    credentials: true,
+  })
+);
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
