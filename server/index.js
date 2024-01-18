@@ -13,11 +13,9 @@ const ArticleModel = require("./models/Article");
 const DocumentModel = require("./models/Document");
 require("dotenv").config();
 const app = express();
-app.use(cors());
-console.log("Before body-parser middleware");
-const port = process.env.DB_PORT;
+app.use(express.json());
+const port = process.env.DB_PORT || 3002;
 app.use(bodyParser.json({ limit: "50mb" }));
-console.log("After body-parser middleware");
 const upload = multer({ limits: { fileSize: 50 * 1024 * 1024 } });
 
 app.use(
